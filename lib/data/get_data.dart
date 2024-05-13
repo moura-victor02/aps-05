@@ -1,9 +1,10 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, avoid_print
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:rede_flutter/model/noticia_model.dart';
 
- getData(String url) async {
+ getData(context, String url) async {
   try {
     final response = await http.get(
       Uri.parse(url),
@@ -35,8 +36,7 @@ import 'package:rede_flutter/model/noticia_model.dart';
       throw Exception('Erro na requisição: ${response.statusCode}');
     }
   } catch (e) {
-    print('Erro durante a requisição: $e');
+    Navigator.of(context).pop();
     rethrow; 
-    
   }
 }

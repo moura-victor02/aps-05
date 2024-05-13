@@ -9,34 +9,34 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: AppConstantsColor.materialButtonColor,
+        primaryColor: AppConstantsColor.lightTextColor,
         fontFamily: 'Quicksand',
         inputDecorationTheme: InputDecorationTheme(
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.grey),
             borderRadius: BorderRadius.circular(8.0),
           ),
-          focusColor: AppConstantsColor.materialButtonColor,
+          focusColor: AppConstantsColor.lightTextColor,
         ),
-        scaffoldBackgroundColor: AppConstantsColor.backgroundColorPage,
+        scaffoldBackgroundColor: AppConstantsColor.backgroundColor,
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: AppConstantsColor.materialButtonColor,
+          backgroundColor: AppConstantsColor.lightTextColor,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppConstantsColor.materialButtonColor,
+            backgroundColor: AppConstantsColor.lightTextColor,
           ),
         ),
         colorScheme: const ColorScheme.light(
-          primary: AppConstantsColor.materialButtonColor,
-          secondary: AppConstantsColor.materialButtonColor,
+          primary: AppConstantsColor.lightTextColor,
+          secondary: AppConstantsColor.lightTextColor,
         ),
       ),
       title: 'Aps-05',

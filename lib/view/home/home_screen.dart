@@ -1,60 +1,38 @@
 import 'package:flutter/material.dart';
-
-import '../../data/get_data.dart';
-import '../../utils/analise/analise_data.dart';
+import 'package:rede_flutter/theme/theme_app.dart';
+import 'package:rede_flutter/widgets/graficos_data.dart';
 import '../../utils/global.dart';
+import '../../widgets/search_button.dart';
+import '../../widgets/welcome.dart';
+import 'widget/app_bar.dart';
 
 class DataAnalysisPage extends StatefulWidget {
   const DataAnalysisPage({super.key});
 
-
-
   @override
-  _DataAnalysisPageState createState() => _DataAnalysisPageState();
+  DataAnalysisPageState createState() => DataAnalysisPageState();
 }
 
-class _DataAnalysisPageState extends State<DataAnalysisPage> {
-  TextEditingController _dataInputController = TextEditingController();
-  String _analysisResult = '';
-
-  @override
-  void dispose() {
-    _dataInputController.dispose();
-    super.dispose();
-  }
-
-
-
+class DataAnalysisPageState extends State<DataAnalysisPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Análise de Dados'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      backgroundColor: AppConstantsColor.lightTextColor,
+      appBar: customAppBar(context),
+      body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
-              controller: _dataInputController,
-              decoration: const InputDecoration(
-                labelText: 'Insira os dados',
-              ),
+            welcome(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                searchButton(context),
+                const SizedBox(width: 10),
+                clearButton(context)
+              ],
             ),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed:() async {
-                dynamic dataNoticias = await getData(urlPadrao); 
-                analyzeData(dataNoticias);
-              }, 
-              child: const Text('Analisar'),
-            ),
-            const SizedBox(height: 16.0),
-            Text(
-              _analysisResult,
-              style: const TextStyle(fontSize: 16.0),
-            ),
+            dadosFiltrados.isNotEmpty ? listViewData() : animation(context),
           ],
         ),
       ),
