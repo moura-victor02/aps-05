@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:charts_flutter_new/flutter.dart' as charts;
+import '../main.dart';
 import '../model/chart.dart';
 import '../utils/global.dart';
 
@@ -24,9 +25,10 @@ Widget buildChart(String dataItem) {
   final List<charts.Series<ChartData, String>> series = [
     charts.Series(
       id: 'Data',
-      data: [ChartData('Value', value)],
+      data: [ChartData('Valor', val(value))],
       domainFn: (ChartData data, _) => data.category,
       measureFn: (ChartData data, _) => data.value,
+      colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
     ),
   ];
 

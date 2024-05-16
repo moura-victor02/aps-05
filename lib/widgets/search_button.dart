@@ -1,17 +1,24 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../data/get_data.dart';
 import '../theme/theme_app.dart';
 import '../utils/global.dart';
 import '../utils/home_methods.dart';
 import 'loading.dart';
 
-Widget searchButton(context) {
+Widget searchButton(context, attPage) {
   return Align(
     alignment: Alignment.center,
     child: GestureDetector(
-      onTap: () {
-        loadingPopUp(context);
-        getList(context);
+      onTap: () async {
+         await loadingPopUp(context);
+       await getList(context);
+       attPage();
+        save();
+        alldata != '' ?save(): null;
       },
       child: Container(
         height: 50,
@@ -46,12 +53,27 @@ Widget searchButton(context) {
   );
 }
 
-Widget clearButton(context) {
+save() {
+  String dataText = jsonEncode(alldata);
+
+  // Caminho do arquivo de texto
+  String filePath = 'C:/aps-05/data.txt';
+
+  // Escrever dados no arquivo
+  File(filePath).writeAsString(dataText).then((File file) {
+    print('Dados foram escritos com sucesso no arquivo $filePath');
+  }).catchError((error) {
+    print('Erro ao escrever os dados no arquivo: $error');
+  });
+}
+
+Widget clearButton(context, attPage) {
   return Align(
     alignment: Alignment.center,
     child: GestureDetector(
       onTap: () {
         dadosFiltrados.clear();
+        attPage();
       },
       child: Container(
         height: 50,

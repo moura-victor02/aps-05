@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:rede_flutter/theme/theme_app.dart';
 
-void loadingPopUp(BuildContext context) {
+ loadingPopUp(BuildContext context) {
   showDialog(
     context: context,
     barrierColor: AppConstantsColor.lightTextColor,

@@ -14,6 +14,10 @@ class DataAnalysisPage extends StatefulWidget {
 }
 
 class DataAnalysisPageState extends State<DataAnalysisPage> {
+  attPage() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +31,9 @@ class DataAnalysisPageState extends State<DataAnalysisPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                searchButton(context),
+                searchButton(context, attPage),
                 const SizedBox(width: 10),
-                clearButton(context)
+                clearButton(context, attPage)
               ],
             ),
             dadosFiltrados.isNotEmpty ? listViewData() : animation(context),

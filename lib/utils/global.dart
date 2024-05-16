@@ -10,7 +10,7 @@ List<String> keywords = [
   'Vendas no Varejo',
   'Emprego',
   'Indústria cresce',
-  'Construção Civil'
+  'Construção Civil', 'Agricultura'
 ];
 
 
